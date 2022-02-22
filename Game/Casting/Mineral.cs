@@ -29,7 +29,7 @@ namespace cse210_04.Game.Casting
             {
                 points = -1;
             }
-            else if (mineralType = "gem")
+            else if (mineralType == "gem")
             {
                 points = 1;
             }

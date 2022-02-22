@@ -45,12 +45,12 @@ namespace cse210_04.Game.Services
 
             if (Raylib.IsKeyDown(KeyboardKey.KEY_UP))
             {
-                dy = -1;
+                dy = 0;
             }
 
             if (Raylib.IsKeyDown(KeyboardKey.KEY_DOWN))
             {
-                dy = 1;
+                dy = 0;
             }
 
             Point direction = new Point(dx, dy);

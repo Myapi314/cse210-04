@@ -18,11 +18,12 @@ namespace cse210_04
         private static int MAX_X = 900;
         private static int MAX_Y = 600;
         private static int CELL_SIZE = 15;
-        private static int FONT_SIZE = 15;
+        private static int FONT_SIZE = 30;
         private static int COLS = 60;
         private static int ROWS = 40;
         private static Color WHITE = new Color(255, 255, 255);
         private static int DEFAULT_MINERALS = 40;
+        private static string CAPTION = "GREED";
 
 
         /// <summary>
@@ -36,7 +37,7 @@ namespace cse210_04
 
             // create the banner
             Actor banner = new Actor();
-            banner.SetText("");
+            banner.SetText("0");
             banner.SetFontSize(FONT_SIZE);
             banner.SetColor(WHITE);
             banner.SetPosition(new Point(CELL_SIZE, 0));
@@ -47,16 +48,16 @@ namespace cse210_04
             robot.SetText("#");
             robot.SetFontSize(FONT_SIZE);
             robot.SetColor(WHITE);
-            robot.SetPosition(new Point(MAX_X / 2, (MAX_Y - 16)));
+            robot.SetPosition(new Point(MAX_X / 2, (MAX_Y - 40)));
             cast.AddActor("robot", robot);
 
             // create the minerals
             Random random = new Random();
             for (int i = 0; i < DEFAULT_MINERALS; i++)
             {
-                string minerals = {"o", "*"};
-                int iMineral = random.Next(minerals.Count);
-                string text = minerals[iMineral];
+                string[] minerals = {"o", "*"};
+                int iMineral = random.Next(2);
+                string text = minerals[iMineral].ToString();
 
                 int x = random.Next(1, COLS);
                 int y = random.Next(1, ROWS);

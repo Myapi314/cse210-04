@@ -15,6 +15,7 @@ namespace cse210_04.Game.Directing
     {
         private KeyboardService keyboardService = null;
         private VideoService videoService = null;
+        private int points = 0;
 
         /// <summary>
         /// Constructs a new instance of Director using the given KeyboardService and VideoService.
@@ -55,31 +56,33 @@ namespace cse210_04.Game.Directing
         }
 
         /// <summary>
-        /// Updates the robot's position and resolves any collisions with artifacts.
+        /// Updates the robot's position and resolves any collisions with Minerals.
         /// </summary>
         /// <param name="cast">The given cast.</param>
         private void DoUpdates(Cast cast)
         {
             Actor banner = cast.GetFirstActor("banner");
             Actor robot = cast.GetFirstActor("robot");
-            List<Actor> artifacts = cast.GetActors("artifacts");
+            List<Actor> minerals = cast.GetActors("minerals");
 
-            banner.SetText("");
             int maxX = videoService.GetWidth();
             int maxY = videoService.GetHeight();
             robot.MoveNext(maxX, maxY);
 
-            foreach (Actor actor in artifacts)
+            Point velocity = new Point (0, 2);
+
+            foreach (Actor actor in minerals)
             {
+                actor.SetVelocity(velocity);
+                actor.MoveNext(maxX, maxY);
+
                 if (robot.GetPosition().Equals(actor.GetPosition()))
                 {
-                    Artifact artifact = (Artifact) actor;
-                    string message = artifact.GetMessage();
+                    Mineral mineral = (Mineral) actor;
+                    points += mineral.GetPoints();
+                    string message = points.ToString();
                     banner.SetText(message);
                 }
-                // Artifact artifact2 = (Artifact) actor;
-                // Point v = new Point (0, 1);
-                // artifact2.SetVelocity(v);
             } 
         }
 
