@@ -49,7 +49,7 @@ namespace cse210_04
             robot.SetFontSize(FONT_SIZE);
             robot.SetColor(WHITE);
             int col = 30;
-            int row = 18;
+            int row = 36;
             Point start = new Point(col, row);
             start = start.Scale(CELL_SIZE);
             robot.SetPosition(start);

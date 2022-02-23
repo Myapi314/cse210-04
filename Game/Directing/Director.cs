@@ -53,7 +53,6 @@ namespace cse210_04.Game.Directing
             Actor robot = cast.GetFirstActor("robot");
             Point velocity = keyboardService.GetDirection();
             robot.SetVelocity(velocity);
-            velocity = velocity.Scale(15);
         }
 
         /// <summary>
@@ -70,7 +69,8 @@ namespace cse210_04.Game.Directing
             int maxY = videoService.GetHeight();
             robot.MoveNext(maxX, maxY);
 
-            Point velocity = new Point (0, 2);
+            Point velocity = new Point (0, 1);
+            velocity = velocity.Scale(15);
 
             foreach (Actor actor in minerals)
             {
@@ -81,6 +81,7 @@ namespace cse210_04.Game.Directing
                 {
                     Mineral mineral = (Mineral) actor;
                     points += mineral.GetPoints();
+                    Console.WriteLine("Contact");
                     string message = points.ToString();
                     banner.SetText(message);
                 }
