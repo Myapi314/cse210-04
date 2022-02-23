@@ -53,6 +53,7 @@ namespace cse210_04.Game.Directing
             Actor robot = cast.GetFirstActor("robot");
             Point velocity = keyboardService.GetDirection();
             robot.SetVelocity(velocity);
+            velocity = velocity.Scale(15);
         }
 
         /// <summary>

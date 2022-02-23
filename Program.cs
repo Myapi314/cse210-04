@@ -48,7 +48,11 @@ namespace cse210_04
             robot.SetText("#");
             robot.SetFontSize(FONT_SIZE);
             robot.SetColor(WHITE);
-            robot.SetPosition(new Point(MAX_X / 2, (MAX_Y - 40)));
+            int col = 30;
+            int row = 18;
+            Point start = new Point(col, row);
+            start = start.Scale(CELL_SIZE);
+            robot.SetPosition(start);
             cast.AddActor("robot", robot);
 
             // create the minerals
