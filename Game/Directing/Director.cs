@@ -81,7 +81,7 @@ namespace cse210_04.Game.Directing
                 {
                     Mineral mineral = (Mineral) actor;
                     points += mineral.GetPoints();
-                    Console.WriteLine("Contact");
+                    cast.RemoveActor("minerals", actor);
                     string message = points.ToString();
                     banner.SetText(message);
                 }
