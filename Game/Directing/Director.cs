@@ -76,6 +76,7 @@ namespace cse210_04.Game.Directing
             {
                 actor.SetVelocity(velocity);
                 actor.MoveNext(maxX, maxY);
+                Random random = new Random();
 
                 if (robot.GetPosition().Equals(actor.GetPosition()))
                 {
@@ -84,6 +85,14 @@ namespace cse210_04.Game.Directing
                     cast.RemoveActor("minerals", actor);
                     string message = points.ToString();
                     banner.SetText(message);
+
+                    int x = random.Next(1, 60);
+                    int y = 1;
+                    Point position = new Point(x, y);
+                    position = position.Scale(15);
+                    actor.SetPosition(position);
+                    cast.AddActor("minerals", actor);
+
                 }
             } 
         }
