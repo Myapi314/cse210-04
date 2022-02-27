@@ -77,8 +77,9 @@ namespace cse210_04.Game.Directing
                 actor.SetVelocity(velocity);
                 actor.MoveNext(maxX, maxY);
                 Random random = new Random();
+                Point actorPosition = actor.GetPosition();
 
-                if (robot.GetPosition().Equals(actor.GetPosition()))
+                if (robot.GetPosition().Equals(actorPosition))
                 {
                     Mineral mineral = (Mineral) actor;
                     points += mineral.GetPoints();
@@ -88,12 +89,25 @@ namespace cse210_04.Game.Directing
 
                     int x = random.Next(1, 60);
                     int y = 1;
+
                     Point position = new Point(x, y);
                     position = position.Scale(15);
                     actor.SetPosition(position);
                     cast.AddActor("minerals", actor);
 
                 }
+                
+                // Implements minerals randomizing their position 
+                // after passing the player.
+                int bottomY = actorPosition.GetY();
+                int newX = random.Next(1, 60);
+                if (bottomY >= 580)
+                {
+                    Point position = new Point(newX, 1);
+                    position = position.Scale(15);
+                    actor.SetPosition(position);
+                }
+                
             } 
         }
 
